@@ -1,24 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import { Box, Flex, Heading } from '@chakra-ui/react';
+import { keywordsTitle } from './utils/constants';
+import { Table } from './components/Table/Table';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box>
+      <Flex>
+        <Heading>{keywordsTitle}</Heading>
+      </Flex>
+      <Table />
+    </Box>
   );
 }
 
