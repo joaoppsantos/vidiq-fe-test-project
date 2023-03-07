@@ -4,21 +4,31 @@ import { ColumnSort } from '../ColumnSort/ColumnSort';
 import { TableElement } from '../TableElement/TableElement';
 
 export const TableHeader = () => {
+  const headerColumn: HeaderColumnType = {
+    [TableColumns.competition]: (
+      <TableElement key={TableColumns.competition}>
+        {<ColumnSort text={TableColumns.competition} />}
+      </TableElement>
+    ),
+    [TableColumns.search_volume]: (
+      <TableElement key={TableColumns.search_volume}>
+        {<ColumnSort text={TableColumns.search_volume} />}
+      </TableElement>
+    ),
+    [TableColumns.overall_score]: (
+      <TableElement key={TableColumns.overall_score}>
+        {<ColumnSort text={TableColumns.overall_score} />}
+      </TableElement>
+    ),
+  };
+
   return (
-    <Box>
+    <Box boxShadow="md">
       <Flex>
-        <TableElement>
+        <TableElement key={TableColumns.keyword}>
           {<ColumnSort text={TableColumns.keyword} />}
         </TableElement>
-        <TableElement>
-          {<ColumnSort text={TableColumns.competition} />}
-        </TableElement>
-        <TableElement>
-          {<ColumnSort text={TableColumns.search_volume} />}
-        </TableElement>
-        <TableElement>
-          {<ColumnSort text={TableColumns.overall_score} />}
-        </TableElement>
+        {Object.values(headerColumn)}
       </Flex>
     </Box>
   );
