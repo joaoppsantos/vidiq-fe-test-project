@@ -14,7 +14,13 @@ export const Pagination = ({
   );
 
   return (
-    <Flex flexDirection="row" width="full" justifyContent="center" p="0.6rem">
+    <Flex
+      flexDirection="row"
+      width="full"
+      justifyContent="center"
+      mt="0.4rem"
+      p="0.6rem"
+    >
       {pageNumbers.map((number) => (
         <Button
           variant={currentPage === number ? 'solid' : 'outline'}

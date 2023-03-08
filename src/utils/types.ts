@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 
 export interface TableElementProps {
   children: number | string | JSX.Element;
+  isMainColumn?: boolean;
+  isHeader?: boolean;
 }
 
 export interface ColumnSortProps {

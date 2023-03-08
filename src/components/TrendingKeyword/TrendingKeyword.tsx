@@ -9,5 +9,5 @@ export const TrendingKeyword = ({
   const getTrending = (): string =>
     trendingKeywords.includes(id) ? `${content} 🔥` : `${content}`;
 
-  return <TableElement children={getTrending()} />;
+  return <TableElement children={getTrending()} isMainColumn />;
 };
