@@ -20,6 +20,13 @@ export interface TrendingKeywordProps {
   trendingKeywords: any;
 }
 
+export interface PaginationProps {
+  pageLimit: number;
+  count: number;
+  onPaginate: (page: number) => void;
+  currentPage: number;
+}
+
 export type HeaderColumnType = {
   [key: string]: ReactNode;
 };
