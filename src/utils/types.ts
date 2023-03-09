@@ -48,6 +48,10 @@ export interface GetTrendingKeywordsProps {
   headers: { total_count: 'X-Total-Count' };
 }
 
+export interface OverallScoreProps {
+  score: number;
+}
+
 export interface Keyword {
   id: number;
   keyword: string;
