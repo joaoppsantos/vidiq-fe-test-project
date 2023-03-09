@@ -8,11 +8,11 @@ export interface TableElementProps {
 
 export interface ColumnSortProps {
   text: string;
-  sortByColumn: (sortParam: string, order: string) => void;
+  sortByColumn: (sortCategory: string, order: string) => void;
 }
 
 export interface TableHeaderProps {
-  sortByColumn: (sortParam: string, order: string) => void;
+  sortByColumn: (sortCategory: string, order: string) => void;
 }
 
 export interface TableContentProps {
@@ -30,8 +30,14 @@ export interface TrendingKeywordProps {
 export interface PaginationProps {
   pageLimit: number;
   count: number;
-  onPaginate: (page: number) => void;
+  onHandlePagination: (currentPage: number) => void;
   currentPage: number;
+}
+
+export interface LocalStorageProps {
+  currentPage: number;
+  sortCategory: string;
+  order: string;
 }
 
 export type HeaderColumnType = {

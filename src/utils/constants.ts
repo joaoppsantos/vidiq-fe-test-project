@@ -1,4 +1,7 @@
 export const KEYWORDS_TITLE = 'List of Keywords';
+export const DEFAULT_PAGE_LIMIT = 20;
+export const DEFAULT_SORT_ORDER = 'asc';
+export const DEFAULT_SORT_CATEGORY = 'keyword';
 export const PAGE_FOOTER_HEIGHT = '170px';
 export const VERY_LOW_SCORE_COLOR = '#FF0000';
 export const LOW_SCORE_COLOR = '#FF9B3F';

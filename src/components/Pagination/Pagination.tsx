@@ -4,7 +4,7 @@ import { PaginationProps } from '../../utils/types';
 export const Pagination = ({
   pageLimit,
   count,
-  onPaginate,
+  onHandlePagination,
   currentPage,
 }: PaginationProps): JSX.Element => {
   const pageCount = Math.ceil(count / pageLimit);
@@ -23,7 +23,7 @@ export const Pagination = ({
           size="sm"
           aria-label={`Page ${number}`}
           key={`button-${number}`}
-          onClick={() => onPaginate(number)}
+          onClick={() => onHandlePagination(number)}
         >
           {number}
         </Button>

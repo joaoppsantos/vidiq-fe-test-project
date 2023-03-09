@@ -1,4 +1,3 @@
-import './App.css';
 import { Box, Heading } from '@chakra-ui/react';
 import { KEYWORDS_TITLE } from './utils/constants';
 import { Table } from './components/Table/Table';
