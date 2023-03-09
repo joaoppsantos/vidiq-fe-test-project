@@ -7,12 +7,15 @@ export const TableElement = ({
   isHeader,
 }: TableElementProps) => (
   <Box
-    fontSize="0.8rem"
-    fontWeight="semibold"
-    lineHeight="2rem"
+    fontSize="0.75rem"
+    fontWeight="medium"
+    lineHeight="1rem"
     color={isHeader ? 'blackAlpha.700' : 'blackAlpha.900'}
     flex={isMainColumn ? '3' : '1'}
-    p="1"
+    pb="3"
+    pt="2"
+    alignItems="center"
+    margin="auto"
   >
     {children}
   </Box>

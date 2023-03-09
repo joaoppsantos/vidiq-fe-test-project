@@ -8,6 +8,11 @@ export interface TableElementProps {
 
 export interface ColumnSortProps {
   text: string;
+  sortByColumn: (sortParam: string, order: string) => void;
+}
+
+export interface TableHeaderProps {
+  sortByColumn: (sortParam: string, order: string) => void;
 }
 
 export interface TableContentProps {

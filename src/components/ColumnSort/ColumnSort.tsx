@@ -1,30 +1,34 @@
 import { Flex, Stack, Text, IconButton } from '@chakra-ui/react';
 import { ChevronUpIcon, ChevronDownIcon } from '@chakra-ui/icons';
-import { ColumnSortProps } from '../../utils/types';
+import { ColumnSortProps, TableColumns } from '../../utils/types';
 
-export const ColumnSort = ({ text }: ColumnSortProps) => {
+export const ColumnSort = ({ text, sortByColumn }: ColumnSortProps) => {
+  const tableColumn: { [key: string]: string } = {
+    [TableColumns.competition]: 'competition',
+    [TableColumns.keyword]: 'keyword',
+    [TableColumns.overall_score]: 'overall_score',
+    [TableColumns.search_volume]: 'search_volume',
+  };
+
   return (
-    <Flex flexDirection="row" alignItems="center">
+    <Flex alignItems="center">
       <Text>{text}</Text>
       <Stack direction="column" spacing="3px">
         <IconButton
           aria-label="Sort Ascending"
           icon={<ChevronUpIcon />}
-          backgroundColor="#fff"
-          p="0"
+          backgroundColor="White"
           height="0.4rem"
-          width="1rem"
-          minW="0.2rem"
-          m="0"
+          minW="0rem"
+          onClick={() => sortByColumn(tableColumn[text], 'asc')}
         />
         <IconButton
           aria-label="Sort Descending"
           icon={<ChevronDownIcon />}
-          backgroundColor="#fff"
-          p="0"
-          height="0.4rem"
-          minW="0.2rem"
-          width="1rem"
+          backgroundColor="White"
+          height="0.2rem"
+          minW="0rem"
+          onClick={() => sortByColumn(tableColumn[text], 'desc')}
         />
       </Stack>
     </Flex>
