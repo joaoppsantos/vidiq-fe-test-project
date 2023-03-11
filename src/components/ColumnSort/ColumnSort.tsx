@@ -12,7 +12,7 @@ export const ColumnSort = ({ text, sortByColumn }: ColumnSortProps) => {
 
   return (
     <Flex alignItems="center">
-      <Text>{text}</Text>
+      <Text mr="1">{text}</Text>
       <Stack direction="column" spacing="3px">
         <IconButton
           aria-label="Sort Ascending"
