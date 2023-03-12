@@ -14,9 +14,9 @@ export async function getTrendingKeywords(
   return {
     data,
     ...Object.entries(options?.headers ?? {}).reduce(
-      (accumulatedHeadersValues, currentEntry) => ({
-        ...accumulatedHeadersValues,
-        [currentEntry[0]]: response.headers.get(currentEntry[1]),
+      (accHeadersValues, current) => ({
+        ...accHeadersValues,
+        [current[0]]: response.headers.get(current[1]),
       }),
       {}
     ),

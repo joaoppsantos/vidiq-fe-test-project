@@ -24,6 +24,7 @@ export const Table = ({
       order: DEFAULT_SORT_ORDER,
     }
   );
+  const [componentMounted, setComponentMounted] = useState(false);
   const [trendingKeywords, setTrendingKeywords] = useState<number[]>([]);
   const [keywords, setKeywords] = useState<Keyword[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
@@ -46,13 +47,14 @@ export const Table = ({
       console.log(error);
     }
   };
-  const handlePagination = (currentPage: number) => {
-    setCurrentPage(currentPage);
-    setPersistedOptions({ ...persistedOptions, currentPage: currentPage });
-  };
   const fetchTrendingKeywords = async () => {
     const trendingKeywordsResponse = await getTrendingKeywords();
     setTrendingKeywords(trendingKeywordsResponse.data);
+  };
+
+  const handlePagination = (currentPage: number) => {
+    setCurrentPage(currentPage);
+    setPersistedOptions({ ...persistedOptions, currentPage: currentPage });
   };
   const sortByColumn = (sortCategory: string, order: string) => {
     setSortCategory(sortCategory);
@@ -62,11 +64,11 @@ export const Table = ({
 
   useEffect(() => {
     fetchTrendingKeywords();
-    fetchKeywords();
+    setComponentMounted(true);
   }, []);
   useEffect(() => {
-    fetchKeywords();
-  }, [currentPage, sortCategory, order]);
+    componentMounted && fetchKeywords();
+  }, [currentPage, sortCategory, order, componentMounted]);
 
   return (
     <Box h="full" overflow="hidden" role="table">
