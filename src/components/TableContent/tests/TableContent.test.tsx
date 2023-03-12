@@ -1,38 +1,10 @@
 import { render } from '@testing-library/react';
+import {
+  mockKeywords,
+  mockMatchMedia,
+  mockTrendingKeywords,
+} from '../../../utils/testMocks';
 import { TableContent } from '../TableContent';
-
-const mockKeywords = [
-  {
-    id: 1,
-    keyword: 'test keyword 1',
-    search_volume: 1000,
-    competition: 'high',
-    overall_score: 75,
-  },
-  {
-    id: 2,
-    keyword: 'test keyword 2',
-    search_volume: 2000,
-    competition: 'low',
-    overall_score: 30,
-  },
-];
-const mockTrendingKeywords = [1];
-
-const mockMatchMedia = (match = false) =>
-  Object.defineProperty(window, 'matchMedia', {
-    writable: true,
-    value: jest.fn().mockImplementation((query) => {
-      return {
-        matches: match,
-        media: query,
-        onchange: null,
-        addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
-        dispatchEvent: jest.fn(),
-      };
-    }),
-  });
 
 describe('TableContent', () => {
   it('renders all the columns when in desktop', () => {

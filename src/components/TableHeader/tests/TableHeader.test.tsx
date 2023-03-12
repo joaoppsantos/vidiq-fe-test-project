@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import { mockMatchMedia } from '../../../utils/testMocks';
 import { TableHeader } from '../TableHeader';
 
 jest.mock('../../../utils/types', () => ({
@@ -9,21 +10,6 @@ jest.mock('../../../utils/types', () => ({
     search_volume: 'search volume',
   },
 }));
-
-const mockMatchMedia = (match = false) =>
-  Object.defineProperty(window, 'matchMedia', {
-    writable: true,
-    value: jest.fn().mockImplementation((query) => {
-      return {
-        matches: match,
-        media: query,
-        onchange: null,
-        addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
-        dispatchEvent: jest.fn(),
-      };
-    }),
-  });
 
 describe('TableHeader', () => {
   const mockSortByColumn = jest.fn();
