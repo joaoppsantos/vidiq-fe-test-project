@@ -87,3 +87,8 @@ export interface QueryOptions {
   sort?: string;
   order?: string;
 }
+
+export interface GetKeywordsProps {
+  data: Keyword[];
+  total_count: number;
+}
