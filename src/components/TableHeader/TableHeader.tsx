@@ -1,4 +1,5 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, useMediaQuery } from '@chakra-ui/react';
+import { MOBILE_WIDTH } from '../../utils/constants';
 import {
   HeaderColumnType,
   TableColumns,
@@ -7,7 +8,10 @@ import {
 import { ColumnSort } from '../ColumnSort/ColumnSort';
 import { TableElement } from '../TableElement/TableElement';
 
-export const TableHeader = ({ sortByColumn }: TableHeaderProps) => {
+export const TableHeader = ({
+  sortByColumn,
+  selectedColumn = TableColumns.search_volume,
+}: TableHeaderProps) => {
   const headerColumn: HeaderColumnType = {
     [TableColumns.search_volume]: (
       <TableElement key={TableColumns.search_volume} isHeader>
@@ -40,6 +44,7 @@ export const TableHeader = ({ sortByColumn }: TableHeaderProps) => {
       </TableElement>
     ),
   };
+  const [isMobile] = useMediaQuery(`(max-width: ${MOBILE_WIDTH})`);
 
   return (
     <Box
@@ -47,20 +52,14 @@ export const TableHeader = ({ sortByColumn }: TableHeaderProps) => {
       height="2.5rem"
       mb="1"
       boxSize="full"
-      paddingRight={'20px'}
-      pl="2"
+      pr="5"
+      pl="4"
+      display="flex"
     >
-      <Flex>
-        <TableElement key={TableColumns.keyword} isMainColumn isHeader>
-          {
-            <ColumnSort
-              text={TableColumns.keyword}
-              sortByColumn={sortByColumn}
-            />
-          }
-        </TableElement>
-        {Object.values(headerColumn)}
-      </Flex>
+      <TableElement key={TableColumns.keyword} isMainColumn isHeader>
+        {<ColumnSort text={TableColumns.keyword} sortByColumn={sortByColumn} />}
+      </TableElement>
+      {isMobile ? headerColumn[selectedColumn] : Object.values(headerColumn)}
     </Box>
   );
 };

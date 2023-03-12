@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { getTrendingKeywords } from '../../utils/getTrendingKeywords';
 import { getKeywords } from '../../utils/getKeywords';
-import { Keyword } from '../../utils/types';
+import { Keyword, TableColumns, TableProps } from '../../utils/types';
 import { TableHeader } from '../TableHeader/TableHeader';
 import { TableContent } from '../TableContent/TableContent';
 import { Pagination } from '../Pagination/Pagination';
@@ -13,7 +13,9 @@ import {
   DEFAULT_SORT_ORDER,
 } from '../../utils/constants';
 
-export const Table = () => {
+export const Table = ({
+  selectedColumn = TableColumns.search_volume,
+}: TableProps) => {
   const [persistedOptions, setPersistedOptions] = useLocalStorage(
     'keywords-table-initial-state',
     {
@@ -68,8 +70,15 @@ export const Table = () => {
 
   return (
     <Box h="full" overflow="hidden" role="table">
-      <TableHeader sortByColumn={sortByColumn} />
-      <TableContent keywords={keywords} trendingKeywords={trendingKeywords} />
+      <TableHeader
+        sortByColumn={sortByColumn}
+        selectedColumn={selectedColumn}
+      />
+      <TableContent
+        keywords={keywords}
+        trendingKeywords={trendingKeywords}
+        selectedColumn={selectedColumn}
+      />
       <Pagination
         pageLimit={DEFAULT_PAGE_LIMIT}
         count={totalCount}

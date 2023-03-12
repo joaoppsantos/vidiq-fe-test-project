@@ -3,7 +3,7 @@ import { LocalStorageProps } from '../types';
 
 export const useLocalStorage = (
   key: string,
-  defaultValue: LocalStorageProps
+  defaultValue: LocalStorageProps | {}
 ) => {
   const [value, setValue] = useState(() => {
     try {
