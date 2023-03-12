@@ -5,6 +5,7 @@ import {
 } from './constants';
 import { QueryOptions, GetKeywordsProps } from './types';
 
+const { REACT_APP_REQUEST_ENDPOINT_HOST } = process.env;
 let cachedResponse: {
   [key: string]: GetKeywordsProps;
 } = {};
@@ -18,7 +19,7 @@ export const getKeywords = async (
     return cachedResponse[key];
   }
 
-  const url = `http://localhost:3004/keywords?_page=${
+  const url = `${REACT_APP_REQUEST_ENDPOINT_HOST}/keywords?_page=${
     options?.page ?? 1
   }&_limit=${options?.limit ?? DEFAULT_PAGE_LIMIT}&_sort=${
     options?.sort ?? DEFAULT_SORT_ORDER

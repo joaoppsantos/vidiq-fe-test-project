@@ -1,9 +1,11 @@
 import { GetTrendingKeywordsProps } from './types';
 
+const { REACT_APP_REQUEST_ENDPOINT_HOST } = process.env;
+
 export async function getTrendingKeywords(
   options?: GetTrendingKeywordsProps
 ): Promise<{ data: number[] }> {
-  const url = `http://localhost:3004/trending-keywords`;
+  const url = `${REACT_APP_REQUEST_ENDPOINT_HOST}/trending-keywords`;
   const response = await fetch(url);
   const data = await response.json();
 
