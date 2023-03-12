@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, SyntheticEvent } from 'react';
 
 export interface TableElementProps {
   children: number | string | JSX.Element;
@@ -13,12 +13,17 @@ export interface ColumnSortProps {
 
 export interface TableHeaderProps {
   sortByColumn: (sortCategory: string, order: string) => void;
+  selectedColumn: string;
 }
 
 export interface TableContentProps {
   trendingKeywords: any;
-  selectedColumn?: string;
   keywords: Keyword[];
+  selectedColumn: string;
+}
+
+export interface TableProps {
+  selectedColumn: string;
 }
 
 export interface TrendingKeywordProps {
@@ -38,6 +43,11 @@ export interface LocalStorageProps {
   currentPage: number;
   sortCategory: string;
   order: string;
+}
+
+export interface SelectColumnMobileProps {
+  onHandleChange: (event: SyntheticEvent) => void;
+  selectedColumn: string;
 }
 
 export type HeaderColumnType = {
