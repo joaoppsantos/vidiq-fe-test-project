@@ -1,29 +1,23 @@
-# vidIQ - Frontend test assignment
+# Keywords Table
 
-Hi there and thank you for taking the time to complete this test.
-Good luck and we hope you will find it interesting!
+This project allows you to display a table of Keywords, paginate through them, sort them ascending and descending by one of the header values and also check the trending keywords.
 
-## Instructions
+The data is being served by a fake JSON Server, which is running in port 3004, and the data that comes from those can be changed in `server/keywords.json`.
 
-- Start the app
+## Getting Started
 
-    `yarn start`
+To run the app, it's recommended to:
 
-- Start the API server
+- run a fake JSON server (in src directory) that will run in port 3004.
 
-    `yarn server`
+> npm run server
 
-## Brief
+- run the application in another port.
 
-The goal of this project is to create a web application that displays a table of Keywords, paginate through them and highlights the trending ones.
+> npm run start
 
-## Requirements
+- To run the existing unit tests:
 
-- Use the provided REST API to fetch your data — check the [instructions](#instructions) above.
-- Use [these designs](https://www.figma.com/file/E1rI2ufda9jmxcoLSeba1L/Test-project?node-id=0%3A1) to build your layout. On mobile, only 2 columns are visible, you need to make it possible for users to view a different column using the dropdown.
-- Users need to be able to paginate through the list of Keywords. You can use whatever pagination strategy you like, just make it so that it persists when closing and/or reopening the app.
-- Users need to be able to sort ascending and descending the columns. This should also be persisted.
+> npm run test
 
-Ask questions and check in as often as you like during the project.
-
-To complete your homework, please fork this repo and commit your work to your fork. When you are ready for us to look at it, give us access to your fork so we can review and run it.
+Any question that may appear, feel free to reach out.
