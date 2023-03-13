@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { getTrendingKeywords } from '../../utils/getTrendingKeywords';
 import { getKeywords } from '../../utils/getKeywords';
@@ -33,6 +33,7 @@ export const Table = ({
   const [sortCategory, setSortCategory] = useState(
     persistedOptions.sortCategory
   );
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchKeywords = async () => {
     try {
@@ -43,6 +44,7 @@ export const Table = ({
       });
       setKeywords(result.data);
       setTotalCount(Number(result.total_count));
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -76,11 +78,17 @@ export const Table = ({
         sortByColumn={sortByColumn}
         selectedColumn={selectedColumn}
       />
-      <TableContent
-        keywords={keywords}
-        trendingKeywords={trendingKeywords}
-        selectedColumn={selectedColumn}
-      />
+      {isLoading ? (
+        <Flex mt="10" justifyContent="center">
+          <div>Loading...</div>
+        </Flex>
+      ) : (
+        <TableContent
+          keywords={keywords}
+          trendingKeywords={trendingKeywords}
+          selectedColumn={selectedColumn}
+        />
+      )}
       <Pagination
         pageLimit={DEFAULT_PAGE_LIMIT}
         count={totalCount}
